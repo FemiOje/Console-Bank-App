@@ -10,8 +10,24 @@ namespace Console_Bank_App
     {
         static void Main(string[] args)
         {
-            Account account1 = new Account("Oluwafemi Akinwale Ojetokun");
-            account1.DisplayAccountInfo();
+            List<Account> allAccounts = new List<Account>();
+            allAccounts.Add(new Account("Oluwafemi Akinwale Ojetokun"));
+            allAccounts.Add(new Account("Keenam Tambari Iseoluwa"));
+            allAccounts.Add(new Account("Sennaike Gbotemi"));
+            allAccounts.Add(new Account("Abdussalam Hameedat"));
+            allAccounts.Add(new Account("Leoso Oluwadara"));
+            allAccounts.Add(new Account("Emeka-Ofoma Ugonna Francis"));
+            allAccounts.Add(new Account("Ikoyo Emmanuel Onoemena"));
+            allAccounts.Add(new Account("Olumese Kelvin Ozeigbe"));
+            allAccounts.Add(new Account("Odegbami Oluuwagbemiro"));
+            allAccounts.Add(new Account("Boateng Joseph"));
+            allAccounts.Add(new Account("Nwaekwu Davidmark"));
+
+            foreach(var account in allAccounts)
+            {
+                account.DisplayAccountInfo();
+                Console.WriteLine("\n\n");
+            }
         }
     }
 }

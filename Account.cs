@@ -10,12 +10,16 @@ namespace Console_Bank_App
         /// </summary>
         private string AccountNumber { get; set; }
 
-        private UInt64 AccountNumbers = 0000000000;
+
+        /// <summary>
+        /// Stores the latest assigned account number.
+        /// </summary>
+        private static UInt64 AccountNumbers { get; set; } = 0000000000;
 
         /// <summary>
         /// Account holder's name.
         /// </summary>
-        public string AccountName { get; private set; }  // Changed to public with private setter
+        public string AccountName { get; private set; }
 
         /// <summary>
         /// Account balance.
@@ -37,17 +41,16 @@ namespace Console_Bank_App
         /// </summary>
         private AccountType _accountType;
 
+
         /// <summary>
-        /// Creates a new account with the account number generated automatically.
+        /// Creates a default savings account with the account name as the account number prefixed by "Customer "
         /// </summary>
-        /// <param name="accountName">Preferred name for the newly created account.</param>
-        /// <param name="type">Either of savings, current or domiciliary.</param>
-        public Account(string accountName, AccountType type)
+        public Account()
         {
-            AccountName = accountName;
-            _accountType = type;
-            AccountBalance = 0.00;
             AccountNumber = GenerateAccountNumber();
+            AccountName = "Customer " + AccountNumber;
+            AccountBalance = 0.00;
+            _accountType = AccountType.Savings;
         }
 
         /// <summary>
@@ -61,6 +64,25 @@ namespace Console_Bank_App
             AccountBalance = 0.00;
             AccountNumber = GenerateAccountNumber();
         }
+
+        /// <summary>
+        /// Creates a new account with the account number generated automatically.
+        /// </summary>
+        /// <param name="accountName">Preferred name for the newly created account.</param>
+        /// <param name="type">Either of savings, current or domiciliary.</param>
+        public Account(string accountName, AccountType type)
+        {
+            AccountName = accountName;
+            _accountType = type;
+            AccountBalance = 0.00;
+            AccountNumber = GenerateAccountNumber();
+        }
+
+
+
+
+
+
 
         /// <summary>
         /// Generates an account number automatically for a newly created account
@@ -112,7 +134,7 @@ namespace Console_Bank_App
         {
             Console.WriteLine("Account number: " + AccountNumber);
             Console.WriteLine("Account name: " + AccountName);
-            Console.WriteLine("Account balance: " + AccountBalance);
+            Console.WriteLine("Account balance: $" + AccountBalance);
             Console.WriteLine("Account type: " + _accountType);
         }
     }
